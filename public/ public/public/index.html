@@ -1,0 +1,9 @@
+ html ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<!DOCTYPE html><html><body><h1>Multiplayer Monopoly</h1><div id="board" style="display:grid; grid-template-columns:rep
+↪ eat(11, 60px); gap:2px;"></div><button onclick="socket.emit('roll')">Roll</button><button onclick="socket.emit('buy')"
+↪ >Buy</button><script src="/socket.io/socket.io.js"></script><script>const socket = io(); const board = document.getEle
+↪ mentById('board'); for(let i=0; i<40; i++) { let d = document.createElement('div'); d.id='cell-'+i; d.style.border='1p
+↪ x solid #ccc'; d.style.height='60px'; board.appendChild(d); } socket.on('update', (s) => { document.querySelectorAll('
+↪ .token').forEach(t=>t.remove()); for(let id in s.players) { let p = s.players[id]; let t = document.createElement('div
+↪ '); t.className='token'; t.style.width='10px'; t.style.height='10px'; t.style.background='red'; document.getElementByI
+↪ d('cell-'+p.pos).appendChild(t); } });</script></body></html>
